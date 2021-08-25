@@ -6,3 +6,17 @@ def tryNumber(value):
         return True
     except ValueError:
         return False
+
+# Returns a list of files inside a single folder.
+# Source : https://stackoverflow.com/questions/1724693/find-a-file-in-python
+import os, fnmatch
+
+def findFiles(pattern, path):
+    result = []
+
+    for root, _, files in os.walk(path):
+        for name in files:
+            if fnmatch.fnmatch(name, pattern):
+                result.append(os.path.join(root, name))
+
+    return result
