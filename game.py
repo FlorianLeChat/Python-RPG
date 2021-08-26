@@ -9,16 +9,16 @@ for game in games:
 	titles.append(Path(game).stem.capitalize())
 
 def selectGame():
-	print("Welcome to the text-based storytelling experience.")
-	print("To begin, please write that you want to play.")
+	lib.consoleLog(message = "Welcome to the text-based storytelling experience.")
+	lib.consoleLog(message = "To begin, please write that you want to play.")
 
 	for index in range(len(titles)):
-		print(str(index + 1) + "-", titles[index])
+		lib.consoleLog(message = str(index + 1) + "- " + titles[index])
 
 	name = lib.tryGetInput()
 
 	if not name:
-		print("Invalid input.")
+		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		selectGame()
 		return
 
@@ -29,17 +29,17 @@ def selectGame():
 			loadGame(title)
 			return
 
-	print("Unable to find the game \"" + name + "\". Please try again.")
+	lib.consoleLog(prefix = "Error", message = "Unable to find the game \"" + name + "\".")
 	selectGame()
 
 # Loading game data
 def loadGame(name):
-	print("Do you want to load the game: \"" + name + "\"? (Y/N)")
+	lib.consoleLog(message = "Do you want to load the game: \"" + name + "\"? (Y/N) ", terminator = "")
 
 	confirmation = lib.tryGetInput()
 
 	if not confirmation:
-		print("Invalid input.")
+		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		loadGame(name)
 		return
 
@@ -55,7 +55,7 @@ def loadGame(name):
 
 	name = str(name).lower()
 
-	print("Loading data...")
+	lib.consoleLog(message = "Loading data...")
 
 	file = open("./universes/" + name + ".json", "r", encoding="utf-8")
 	data = json.loads(file.read())
