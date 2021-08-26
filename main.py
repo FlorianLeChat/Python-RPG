@@ -6,16 +6,19 @@ def checkPassword():
 
 	value = lib.tryGetInput()
 
+	# Checks if the input is valid.
 	if not value:
 		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		checkPassword()
 		return
 
+	# Checks if the input is a number.
 	if not lib.tryGetNumber(value):
 		lib.consoleLog(prefix = "Error", message = "Password is invalid.")
 		checkPassword();
 		return
 
+	# Checks if the input matches "27412".
 	if int(value) != 27412:
 		lib.consoleLog(prefix = "Error", message = "Password is incorrect.")
 		checkPassword();
@@ -29,16 +32,19 @@ modes = ["RPG [WIP]", "Auto-Development [Unavailable]", "Debug/Test [OK]"]
 def selectGamemode():
 	lib.consoleLog(message = "Which gamemode do you want to use now?")
 
+	# Iterates through all gamemodes.
 	for index in range(len(modes)):
 		lib.consoleLog(message = str(index + 1) + "- " + modes[index])
 
 	selection = lib.tryGetInput()
 
+	# Checks if the input is valid.
 	if not selection:
 		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		selectGamemode()
 		return
 
+	# Checks if the input is a number.
 	if not lib.tryGetNumber(selection):
 		lib.consoleLog(prefix = "Error", message = "Invalid number.")
 		selectGamemode()
@@ -46,6 +52,7 @@ def selectGamemode():
 
 	selection = int(selection)
 
+	# Checks the gamemode selection before redirecting it to the appropriate file.
 	if selection == 1:
 		importlib.import_module("game")
 	elif selection == 2:
@@ -57,7 +64,7 @@ def selectGamemode():
 		lib.consoleLog(prefix = "Error", message = "Unable to find the gamemode.")
 		selectGamemode()
 
-# EOF
+# End of file
 print("------------------- PYTHON RPG ------------------")
 print("-- https://github.com/FlorianLeChat/Python-RPG --")
 print("-------------------------------------------------")
