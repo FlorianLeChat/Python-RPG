@@ -53,12 +53,12 @@ def loadGame(name):
 		selectGame()
 		return
 
-	name = name.lower()
+	name = str(name).lower()
 
-	print("Loading...")
+	print("Loading data...")
 
-	file = open("./universes/" + name + ".json", "r", encoding="utf-8").read()
-	data = json.loads(file)
+	file = open("./universes/" + name + ".json", "r", encoding="utf-8")
+	data = json.loads(file.read())
 
 	info = data["info"]
 	script = data["script"]
