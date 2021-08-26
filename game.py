@@ -22,10 +22,12 @@ def selectGame():
 		selectGame()
 		return
 
+	name = name.capitalize()
+
 	for title in titles:
-		if name.find(title.lower()) != -1:
-			#loadGame
-			break
+		if name.find(title) != -1:
+			loadGame(title)
+			return
 
 	print("Impossible to find the game \"" + name + "\". Please try again.")
 	selectGame()
