@@ -1,4 +1,6 @@
+#
 # Password check
+#
 import lib
 
 def checkPassword():
@@ -26,7 +28,9 @@ def checkPassword():
 
 	lib.consoleLog(message = "User authenticated.")
 
+#
 # Selection of the gamemode
+#
 import importlib
 
 modes = ["RPG Story Reader [WIP]", "RPG Story Creator [Unavailable]", "Debug/Test [OK]"]
@@ -66,7 +70,9 @@ def selectGamemode():
 		lib.consoleLog(prefix = "Error", message = "Unable to find the gamemode.")
 		selectGamemode()
 
+#
 # End of file
+#
 import settings
 
 print("------------------- PYTHON RPG ------------------")
