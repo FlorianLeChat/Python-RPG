@@ -98,7 +98,6 @@ def playScript(script):
 	for index in range(1, len(script)):
 		readField(script[str(index)])
 		print()
-		time.sleep(settings.FADE_TIME)
 
 	lib.consoleLog(message = "End of the script reading...")
 
