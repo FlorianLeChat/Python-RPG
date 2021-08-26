@@ -1,6 +1,6 @@
 # Try to check if the input is a number
 # https://stackoverflow.com/questions/1265665/how-can-i-check-if-a-string-represents-an-int-without-using-try-except
-def tryNumber(value):
+def tryGetNumber(value):
 	try:
 		int(value)
 		return True
