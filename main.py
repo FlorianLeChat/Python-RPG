@@ -1,5 +1,5 @@
 # Password check
-import lib, importlib
+import lib, settings, importlib
 
 def checkPassword():
 	lib.consoleLog(message = "Enter the password to continue: ", newLine = "")
@@ -69,5 +69,7 @@ print("------------------- PYTHON RPG ------------------")
 print("-- https://github.com/FlorianLeChat/Python-RPG --")
 print("-------------------------------------------------")
 
-checkPassword()
+if settings.DEBUG_MODE == False:
+	checkPassword()
+
 selectGamemode()
