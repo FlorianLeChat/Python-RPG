@@ -116,13 +116,6 @@ import settings, time
 
 cooldown = True
 
-def handleInput():
-	# Waits for the user to press a key.
-	while True:
-		if msvcrt.getch():
-			global cooldown
-			cooldown = False
-
 def showText(value):
 	# Checks if the text is not already a list.
 	if type(value) is list:
@@ -166,6 +159,12 @@ import platform
 
 if platform.system() == "Windows":
 	import msvcrt
+
+	def handleInput():
+		while True:
+			if msvcrt.getch():
+				global cooldown
+				cooldown = False
 
 	thread = Thread(target = handleInput)
 	thread.daemon = True
