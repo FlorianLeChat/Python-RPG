@@ -1,6 +1,6 @@
 # Game selection
 from pathlib import Path
-import lib
+import lib, json
 
 games = lib.findFiles("*.json", "./universes")
 titles = []
@@ -29,5 +29,43 @@ def selectGame():
 			loadGame(title)
 			return
 
-	print("Impossible to find the game \"" + name + "\". Please try again.")
+	print("Unable to find the game \"" + name + "\". Please try again.")
 	selectGame()
+
+# Loading game data
+def loadGame(name):
+	print("Do you want to load the game: \"" + name + "\"? (Y/N)")
+
+	confirmation = lib.getInput()
+
+	if not confirmation:
+		print("Invalid input.")
+		loadGame(name)
+		return
+
+	confirmation = confirmation.upper()
+
+	if not confirmation or (confirmation != "Y" and confirmation != "N"):
+		loadGame(name)
+		return
+
+	if confirmation.strip() == "N":
+		selectGame()
+		return
+
+	name = name.lower()
+
+	print("Loading...")
+
+	file = open("./universes/" + name + ".json", "r", encoding="utf-8").read()
+	data = json.loads(file)
+
+	info = data["info"]
+	script = data["script"]
+
+	print("~ " + info["title"] + " ~")
+	print("By " + info["author"])
+	print("Language: " + info["language"])
+	print()
+	print("-> " + info["description"])
+
