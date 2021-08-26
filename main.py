@@ -1,5 +1,5 @@
 # Password check
-import lib, settings, importlib
+import lib
 
 def checkPassword():
 	lib.consoleLog(message = "Enter the password to continue: ", newLine = "")
@@ -27,6 +27,8 @@ def checkPassword():
 	lib.consoleLog(message = "User authenticated.")
 
 # Selection of the gamemode
+import importlib
+
 modes = ["RPG Story Reader [WIP]", "RPG Story Creator [Unavailable]", "Debug/Test [OK]"]
 
 def selectGamemode():
@@ -65,6 +67,8 @@ def selectGamemode():
 		selectGamemode()
 
 # End of file
+import settings
+
 print("------------------- PYTHON RPG ------------------")
 print("-- https://github.com/FlorianLeChat/Python-RPG --")
 print("-------------------------------------------------")
