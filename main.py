@@ -58,5 +58,9 @@ def selectGamemode():
 		selectGamemode()
 
 # EOF
+print("------------------- PYTHON RPG ------------------")
+print("-- https://github.com/FlorianLeChat/Python-RPG --")
+print("-------------------------------------------------")
+
 checkPassword()
 selectGamemode()
