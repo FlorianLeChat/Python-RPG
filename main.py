@@ -5,7 +5,7 @@ def checkPassword():
 	value = lib.getInput("Enter the password to continue: ")
 
 	if not value:
-		print("Invalid input")
+		print("Invalid input.")
 		checkPassword()
 		return
 
@@ -31,7 +31,7 @@ def selectGamemode():
 	selection = lib.getInput()
 
 	if not selection:
-		print("Invalid input")
+		print("Invalid input.")
 		selectGamemode()
 		return
 
@@ -45,7 +45,7 @@ def selectGamemode():
 	if selection == 1:
 		importlib.import_module("game")
 	elif selection == 2:
-		print("Not Yet Implemented")
+		print("Not Yet Implemented.")
 		pass # NYI
 	elif selection == 3:
 		importlib.import_module("test")
