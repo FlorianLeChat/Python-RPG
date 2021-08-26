@@ -65,7 +65,7 @@ def loadStory(name):
 	lib.consoleLog(message = "Loading data...")
 
 	# Load the corresponding story file.
-	file = open("./universes/" + name + ".json", "r", encoding = "utf-8")
+	file = open("./stories/" + name + ".json", "r", encoding = "utf-8")
 	data = json.loads(file.read())
 
 	info, script = data.get("info"), data.get("script")
