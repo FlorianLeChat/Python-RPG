@@ -105,32 +105,38 @@ def playScript(script):
 cooldown = True
 
 def handleInput():
-	#
+	# Waits for the user to press a key.
 	while True:
 		if msvcrt.getch():
 			global cooldown
 			cooldown = False
 
 def showText(value):
+	# Checks if the text is not already a list.
 	if type(value) is list:
-		value = " ".join(value)
+		words = " ".join(value)
+	else:
+		words = list(value)
 
-	words = list(value)
-
+	# Displays each letter progressively with
+	# a waiting time between each one.
 	for word in words:
 		print(word, end = "")
 		time.sleep(cooldown and settings.FADE_TIME or 0)
 
 def readField(data):
+	# Checks if the field has notes.
 	type = data.get("type", "narrator")
 	note = data.get("note", "")
 
 	if note != "":
 		print("Note: " + note)
 
+	# Resets the wait time status for the other dialogs.
 	global cooldown
 	cooldown = True
 
+	# Checks the field type.
 	if type == "narrator":
 		showText(data.get("data", ""))
 	elif type == "dialog":
