@@ -88,4 +88,13 @@ def loadStory(name):
 
 	file.close()
 
-loadGame("Cuban")
+# Playing game script
+def playScript(script):
+	lib.consoleLog(message = "Start reading the script...")
+
+	for index in range(1, len(script)):
+		readField(script[str(index)])
+		print()
+
+	lib.consoleLog(message = "End of the script reading...")
+
