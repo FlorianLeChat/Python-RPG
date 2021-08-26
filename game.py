@@ -77,3 +77,5 @@ def loadGame(name):
 
 	playScript(script)
 
+	file.close()
+
