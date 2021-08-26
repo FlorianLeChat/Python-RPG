@@ -1,7 +1,6 @@
 # Story selection
 from pathlib import Path
-from threading import Thread
-import lib, settings, json, time, platform
+import lib
 
 games = lib.findFiles("*.json", "./stories")
 titles = []
@@ -37,6 +36,8 @@ def selectStory():
 	selectStory()
 
 # Loading story data
+import json
+
 def loadStory(name):
 	lib.consoleLog(message = "Do you want to load the story: \"" + name + "\"? (Y/N) ", newLine = "")
 
@@ -102,6 +103,8 @@ def playScript(script):
 	lib.consoleLog(message = "End of the script reading...")
 
 # Story processing
+import settings, time
+
 cooldown = True
 
 def handleInput():
@@ -147,6 +150,9 @@ def readField(data):
 # Captures keyboard input on another thread to avoid blocking the main thread.
 # Available only on Windows Systems (because of "msvcrt" library).
 # https://realpython.com/python-gil/#the-impact-on-multi-threaded-python-programs
+from threading import Thread
+import platform
+
 if platform.system() == "Windows":
 	import msvcrt
 
