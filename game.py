@@ -15,7 +15,7 @@ def selectGame():
 	for index in range(len(titles)):
 		print(str(index + 1) + "-", titles[index])
 
-	name = lib.getInput()
+	name = lib.tryGetInput()
 
 	if not name:
 		print("Invalid input.")
@@ -36,7 +36,7 @@ def selectGame():
 def loadGame(name):
 	print("Do you want to load the game: \"" + name + "\"? (Y/N)")
 
-	confirmation = lib.getInput()
+	confirmation = lib.tryGetInput()
 
 	if not confirmation:
 		print("Invalid input.")

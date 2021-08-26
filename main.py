@@ -2,7 +2,7 @@
 import lib, importlib
 
 def checkPassword():
-	value = lib.getInput("Enter the password to continue: ")
+	value = lib.tryGetInput("Enter the password to continue: ")
 
 	if not value:
 		print("Invalid input.")
@@ -28,7 +28,7 @@ def selectGamemode():
 	for index in range(len(modes)):
 		print(str(index + 1) + "-", modes[index])
 
-	selection = lib.getInput()
+	selection = lib.tryGetInput()
 
 	if not selection:
 		print("Invalid input.")
