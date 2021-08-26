@@ -21,5 +21,5 @@ test("hello world!")
 # Import system
 import lib
 
-test(lib.tryNumber("hey"))
-test(lib.tryNumber("123"))
+test(lib.tryGetNumber("hey"))
+test(lib.tryGetNumber("123"))

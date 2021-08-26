@@ -9,7 +9,7 @@ def checkPassword():
 		checkPassword()
 		return
 
-	if not lib.tryNumber(value):
+	if not lib.tryGetNumber(value):
 		print("Password is invalid.")
 		checkPassword();
 		return
@@ -35,7 +35,7 @@ def selectGamemode():
 		selectGamemode()
 		return
 
-	if not lib.tryNumber(selection):
+	if not lib.tryGetNumber(selection):
 		print("Invalid number.")
 		selectGamemode()
 		return
