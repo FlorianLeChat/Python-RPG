@@ -15,6 +15,10 @@ def tryGetInput(prompt = ""):
 	except KeyboardInterrupt:
 		return False
 
+# Displays a message in the output terminal formatted for the RPG project.
+def consoleLog(prefix = "Info", message = "", terminator = "\n"):
+	print("[RPG-" + prefix + "] " + message, end = terminator)
+
 # Returns a list of files inside a single folder.
 # https://stackoverflow.com/questions/1724693/find-a-file-in-python
 import os, fnmatch

@@ -2,41 +2,45 @@
 import lib, importlib
 
 def checkPassword():
-	value = lib.tryGetInput("Enter the password to continue: ")
+	lib.consoleLog(message = "Enter the password to continue: ", terminator = "")
+
+	value = lib.tryGetInput()
 
 	if not value:
-		print("Invalid input.")
+		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		checkPassword()
 		return
 
 	if not lib.tryGetNumber(value):
-		print("Password is invalid.")
+		lib.consoleLog(prefix = "Error", message = "Password is invalid.")
 		checkPassword();
 		return
 
 	if int(value) != 27412:
-		print("Password is incorrect.")
+		lib.consoleLog(prefix = "Error", message = "Password is incorrect.")
 		checkPassword();
 		return
+
+	lib.consoleLog(message = "User authenticated.")
 
 # Selection of the gamemode
 modes = ["RPG [WIP]", "Auto-Development [Unavailable]", "Debug/Test [OK]"]
 
 def selectGamemode():
-	print("Which gamemode do you want to use now?")
+	lib.consoleLog(message = "Which gamemode do you want to use now?")
 
 	for index in range(len(modes)):
-		print(str(index + 1) + "-", modes[index])
+		lib.consoleLog(message = str(index + 1) + "- " + modes[index])
 
 	selection = lib.tryGetInput()
 
 	if not selection:
-		print("Invalid input.")
+		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		selectGamemode()
 		return
 
 	if not lib.tryGetNumber(selection):
-		print("Invalid number.")
+		lib.consoleLog(prefix = "Error", message = "Invalid number.")
 		selectGamemode()
 		return
 
@@ -45,12 +49,12 @@ def selectGamemode():
 	if selection == 1:
 		importlib.import_module("game")
 	elif selection == 2:
-		print("Not Yet Implemented.")
+		lib.consoleLog(message = "Not Yet Implemented.")
 		pass # NYI
 	elif selection == 3:
 		importlib.import_module("test")
 	else:
-		print("Unable to find the gamemode.")
+		lib.consoleLog(prefix = "Error", message = "Unable to find the gamemode.")
 		selectGamemode()
 
 # EOF
