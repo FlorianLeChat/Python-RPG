@@ -86,12 +86,14 @@ def loadStory(name):
 
 	playScript(script)
 
+	# Close the file at the end of the story.
 	file.close()
 
 # Playing game script
 def playScript(script):
 	lib.consoleLog(message = "Start reading the script...")
 
+	# Iterating across all lines of the story.
 	for index in range(1, len(script)):
 		readField(script[str(index)])
 		print()
@@ -99,3 +101,31 @@ def playScript(script):
 
 	lib.consoleLog(message = "End of the script reading...")
 
+# Story processing
+def showText(value):
+	if type(value) is list:
+		value = " ".join(value)
+
+	words = list(value)
+
+	for word in words:
+		print(word, end = "")
+		time.sleep(settings.FADE_TIME)
+
+def readField(data):
+	type = data.get("type", "narrator")
+	note = data.get("note", "")
+
+	if note != "":
+		print("Note: " + note)
+
+	if type == "narrator":
+		showText(data.get("data", ""))
+	elif type == "dialog":
+		pass
+	elif type == "action":
+		pass
+
+# End of file
+#selectGame()
+loadStory("Cuban")
