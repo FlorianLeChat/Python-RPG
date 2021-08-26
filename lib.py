@@ -9,7 +9,7 @@ def tryGetNumber(value):
 
 # Try to retrieve the input from the usage by checking the termination
 # controls like CTRL+C to stop the program.
-def getInput(prompt = ""):
+def tryGetInput(prompt = ""):
 	try:
 		return input(prompt)
 	except KeyboardInterrupt:
