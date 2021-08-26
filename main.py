@@ -27,7 +27,7 @@ def checkPassword():
 	lib.consoleLog(message = "User authenticated.")
 
 # Selection of the gamemode
-modes = ["RPG [WIP]", "Auto-Development [Unavailable]", "Debug/Test [OK]"]
+modes = ["RPG Story Reader [WIP]", "RPG Story Creator [Unavailable]", "Debug/Test [OK]"]
 
 def selectGamemode():
 	lib.consoleLog(message = "Which gamemode do you want to use now?")
