@@ -60,12 +60,20 @@ def loadGame(name):
 	file = open("./universes/" + name + ".json", "r", encoding = "utf-8")
 	data = json.loads(file.read())
 
-	info = data["info"]
-	script = data["script"]
+	info, script = data.get("info"), data.get("script")
 
-	print("~ " + info["title"] + " ~")
-	print("By " + info["author"])
-	print("Language: " + info["language"])
+	if not info or not script:
+		lib.consoleLog(prefix = "Error", message = "Game data error.")
+		selectGame()
+		return
+
 	print()
-	print("-> " + info["description"])
+	print("~ " + info.get("title", "@Title") + " ~")
+	print("By " + info.get("author", "@Author"))
+	print("Language: " + info.get("language", "@Language"))
+	print()
+	print("-> " + info.get("description", "@Description"))
+	print()
+
+	playScript(script)
 
