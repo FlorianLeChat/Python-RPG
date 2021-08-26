@@ -17,7 +17,7 @@ def tryGetInput(prompt = ""):
 
 # Displays a message in the output terminal formatted for the RPG project.
 def consoleLog(prefix = "Info", message = "", newLine = "\n"):
-	print("[RPG-" + prefix + "] " + message, end = newLine)
+	print("[" + prefix + "] " + message, end = newLine)
 
 # Returns a list of files inside a single folder.
 # https://stackoverflow.com/questions/1724693/find-a-file-in-python
