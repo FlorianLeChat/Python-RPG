@@ -53,11 +53,11 @@ def loadGame(name):
 		selectGame()
 		return
 
-	name = str(name).lower()
+	name = name.lower()
 
 	lib.consoleLog(message = "Loading data...")
 
-	file = open("./universes/" + name + ".json", "r", encoding="utf-8")
+	file = open("./universes/" + name + ".json", "r", encoding = "utf-8")
 	data = json.loads(file.read())
 
 	info = data["info"]
