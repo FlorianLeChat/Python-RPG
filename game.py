@@ -117,18 +117,27 @@ import settings, time
 
 cooldown = True
 
-def showText(value):
-	# Checks if the text is not already a list.
-	if type(value) is list:
-		words = " ".join(value)
-	else:
-		words = list(value)
+def showText(value = "", _type = "narrator"):
+	if _type == "narrator":
+		# Checks if the text is not already a string.
+		if type(value) is list:
+			words = " ".join(value)
+		else:
+			words = list(value)
 
-	# Displays each letter progressively with
-	# a waiting time between each one.
-	for word in words:
-		print(word, end = "")
-		time.sleep(cooldown and settings.FADE_TIME or 0)
+		# Displays each letter progressively with
+		# a waiting time between each one.
+		print("**", end = "")
+
+		for word in words:
+			print(word, end = "")
+			time.sleep(cooldown and settings.FADE_TIME or 0)
+	elif _type == "dialog":
+		# Checks if the text is not already a list.
+		if type(value) is str:
+			words = list(value)
+
+
 
 def readField(data):
 	# Checks if the field has notes.
@@ -142,13 +151,9 @@ def readField(data):
 	global cooldown
 	cooldown = True
 
-	# Checks the field type.
-	if type == "narrator":
-		showText(data.get("data", ""))
-	elif type == "dialog":
-		pass
-	elif type == "action":
-		pass
+	#
+	if type == "narrator" or type == "dialog":
+		showText(data.get("data"), type)
 
 #
 # Captures keyboard input on another thread to avoid blocking the main thread.
