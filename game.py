@@ -1,4 +1,6 @@
+#
 # Story selection
+#
 from pathlib import Path
 import lib
 
@@ -35,7 +37,9 @@ def selectStory():
 	lib.consoleLog(prefix = "Error", message = "Unable to find the story \"" + name + "\".")
 	selectStory()
 
+#
 # Loading story data
+#
 import json
 
 def loadStory(name):
@@ -91,9 +95,12 @@ def loadStory(name):
 	# Close the file at the end of the story.
 	file.close()
 
+#
 # Playing game script
+#
 def playScript(script):
 	lib.consoleLog(message = "Start reading the script...")
+	print()
 
 	# Iterating across all lines of the story.
 	for index in range(1, len(script)):
@@ -102,7 +109,9 @@ def playScript(script):
 
 	lib.consoleLog(message = "End of the script reading...")
 
+#
 # Story processing
+#
 import settings, time
 
 cooldown = True
@@ -147,9 +156,11 @@ def readField(data):
 	elif type == "action":
 		pass
 
+#
 # Captures keyboard input on another thread to avoid blocking the main thread.
 # Available only on Windows Systems (because of "msvcrt" library).
 # https://realpython.com/python-gil/#the-impact-on-multi-threaded-python-programs
+#
 from threading import Thread
 import platform
 
@@ -160,6 +171,8 @@ if platform.system() == "Windows":
 	thread.daemon = True
 	thread.start()
 
+#
 # End of file
+#
 #selectGame()
 loadStory("Cuban")
