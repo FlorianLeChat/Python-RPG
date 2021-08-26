@@ -6,6 +6,13 @@ def tryNumber(value):
         return True
     except ValueError:
         return False
+# Try to retrieve the input from the usage by checking the termination
+# controls like CTRL+C to stop the program.
+def getInput(prompt = ""):
+	try:
+		return input(prompt)
+	except KeyboardInterrupt:
+		return False
 
 # Returns a list of files inside a single folder.
 # Source : https://stackoverflow.com/questions/1724693/find-a-file-in-python

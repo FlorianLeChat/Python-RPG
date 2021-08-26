@@ -2,7 +2,12 @@
 import lib, importlib
 
 def checkPassword():
-	value = input("Enter the password to continue: ")
+	value = lib.getInput("Enter the password to continue: ")
+
+	if not value:
+		print("Invalid input")
+		checkPassword()
+		return
 
 	if not lib.tryNumber(value):
 		print("Password is invalid.")
@@ -14,8 +19,6 @@ def checkPassword():
 		checkPassword();
 		return
 
-checkPassword()
-
 # Selection of the gamemode
 modes = ["RPG [WIP]", "Auto-Development [Unavailable]", "Debug/Test [OK]"]
 
@@ -25,10 +28,15 @@ def selectGamemode():
 	for index in range(len(modes)):
 		print(str(index + 1) + "-", modes[index])
 
-	selection = input()
+	selection = lib.getInput()
+
+	if not selection:
+		print("Invalid input")
+		selectGamemode()
+		return
 
 	if not lib.tryNumber(selection):
-		print("Error!")
+		print("Invalid number.")
 		selectGamemode()
 		return
 
@@ -45,4 +53,6 @@ def selectGamemode():
 		print("Unable to find the gamemode.")
 		selectGamemode()
 
+# EOF
+checkPassword()
 selectGamemode()
