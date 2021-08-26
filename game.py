@@ -1,5 +1,6 @@
 # Story selection
 from pathlib import Path
+from threading import Thread
 import lib, settings, json, time
 
 games = lib.findFiles("*.json", "./stories")
@@ -102,6 +103,14 @@ def playScript(script):
 	lib.consoleLog(message = "End of the script reading...")
 
 # Story processing
+cooldown = True
+
+def handleInput():
+	input()
+
+	global cooldown
+	cooldown = False
+
 def showText(value):
 	if type(value) is list:
 		value = " ".join(value)
@@ -110,7 +119,7 @@ def showText(value):
 
 	for word in words:
 		print(word, end = "")
-		time.sleep(settings.FADE_TIME)
+		time.sleep(cooldown and settings.FADE_TIME or 0)
 
 def readField(data):
 	type = data.get("type", "narrator")
@@ -119,12 +128,21 @@ def readField(data):
 	if note != "":
 		print("Note: " + note)
 
+	global cooldown
+	cooldown = True
+
 	if type == "narrator":
 		showText(data.get("data", ""))
 	elif type == "dialog":
 		pass
 	elif type == "action":
 		pass
+
+# Captures keyboard input on another thread to avoid blocking the main thread.
+# https://realpython.com/python-gil/#the-impact-on-multi-threaded-python-programs
+thread = Thread(target = handleInput)
+thread.daemon = True
+thread.start()
 
 # End of file
 #selectGame()
