@@ -2,7 +2,7 @@
 import lib, importlib
 
 def checkPassword():
-	lib.consoleLog(message = "Enter the password to continue: ", terminator = "")
+	lib.consoleLog(message = "Enter the password to continue: ", newLine = "")
 
 	value = lib.tryGetInput()
 

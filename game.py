@@ -34,7 +34,7 @@ def selectGame():
 
 # Loading game data
 def loadGame(name):
-	lib.consoleLog(message = "Do you want to load the game: \"" + name + "\"? (Y/N) ", terminator = "")
+	lib.consoleLog(message = "Do you want to load the game: \"" + name + "\"? (Y/N) ", newLine = "")
 
 	confirmation = lib.tryGetInput()
 
