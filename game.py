@@ -73,6 +73,7 @@ def loadStory(name):
 	# Load the corresponding story file.
 	file = open("./stories/" + name + ".json", "r", encoding = "utf-8")
 	data = json.loads(file.read())
+	file.close()
 
 	info, script = data.get("info"), data.get("script")
 
@@ -90,10 +91,8 @@ def loadStory(name):
 	print("-> " + info.get("description", "@Description"))
 	print()
 
-	playScript(script)
 
-	# Close the file at the end of the story.
-	file.close()
+	playScript(script)
 
 #
 # Playing game script
