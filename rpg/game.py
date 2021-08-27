@@ -129,24 +129,24 @@ def handleInput():
 
 keyboard.add_hotkey("space", handleInput)
 
-def showText(fieldValue = "", fieldType = "", shouldWait = True):
+def showText(value = "", _type = "", shouldWait = True):
 	# Checks if the text is not a string.
-	if type(fieldValue) is list:
-		fieldValue = " ".join(fieldValue)
+	if type(value) is list:
+		value = " ".join(value)
 
-	if fieldType == "narrator":
+	if _type == "narrator":
 		# Two points are placed to indicate that it's the narrator.
 		print("**", end = "")
-	elif fieldType == "dialog":
+	elif _type == "dialog":
 		# Search for all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
-		prefixes = re.findall("\w+:", fieldValue)
+		prefixes = re.findall("\w+:", value)
 
 		for prefix in prefixes:
-			position = fieldValue.find(prefix)
+			position = value.find(prefix)
 
-			if position != 0:
-				fieldValue = fieldValue[:position] + "\n" + fieldValue[position:]
+			if position > 0:
+				value = value[:position] + "\n" + value[position:]
 
 	# Resets the wait time status for the other dialogs.
 	global cooldown
@@ -154,7 +154,7 @@ def showText(fieldValue = "", fieldType = "", shouldWait = True):
 
 	# Displays each letter progressively with a waiting time between each one.
 	# And asks for a confirmation to continue (dialogs only).
-	for character in fieldValue:
+	for character in value:
 		if character == "\n":
 			keyboard.wait("enter")
 			cooldown = True
@@ -168,28 +168,31 @@ def showText(fieldValue = "", fieldType = "", shouldWait = True):
 		print()
 
 def doAction(data):
-	#
+	# Displays a description of the current situation before the action.
 	showText("Action -> " + data.get("description", "@Description"))
 
-	#
+	# Checks if there is a required value (to make a roll or remember a previous action).
 	requirement = data.get("requirement")
 
 	if not requirement:
 		return
 
 	if lib.tryGetNumber(requirement):
-		#
+		# Roll over 100 as if to simulate a probability.
 		roll = random.randrange(1, 100)
 
 		showText("Roll <-> " + str(roll) + "/100 (>=" + str(requirement) + " required)")
 
 		if roll >= requirement:
-			showText("Action -> " + data.get("results", ["@Success"])[0])
+			showText("Action <- " + data.get("results", ["@Success"])[0])
 		else:
-			showText("Action <- " + data.get("results", ["@Failure"])[1])
-	else:
+			showText("Action <- " + data.get("results", ["", "@Failed"])[1])
+	elif requirement.find("@"):
 		#
 		pass
+	else:
+		# No value is required, the result is displayed.
+		showText("Action <- " + data.get("results", "@Success"))
 
 def readField(data):
 	# Checks if the field has notes.
