@@ -71,7 +71,7 @@ def loadStory(name):
 	lib.consoleLog(message = "Loading data...")
 
 	# Load the corresponding story file.
-	file = open("./stories/" + name + ".json", "r", encoding = "utf-8")
+	file = open("./rpg/data/" + name + ".json", "r", encoding = "utf-8")
 	data = json.loads(file.read())
 	file.close()
 
@@ -91,30 +91,44 @@ def loadStory(name):
 	print("-> " + info.get("description", "@Description"))
 	print()
 
+	# Waits for the user's confirmation to start reading.
+	print("Press something to continue...")
+	lib.tryGetInput("Tip: you have to press \"ENTER\" to display the dialogues.\n")
 
 	playScript(script)
 
 #
 # Playing game script
 #
+import settings
+
 def playScript(script):
 	lib.consoleLog(message = "Start reading the script...")
 	print()
 
 	# Iterating across all lines of the story.
+	# And asks for a confirmation to continue.
 	for index in range(1, len(script)):
 		readField(script[str(index)])
-		print()
+		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)
+		print()
 
 	lib.consoleLog(message = "End of the script reading...")
 
 #
 # Story processing
 #
-import settings, time, re
+import time, re, keyboard
 
 cooldown = True
+
+def handleInput():
+	# Remove the delay between each field on a keyboard input.
+	global cooldown
+	cooldown = False
+
+keyboard.add_hotkey("space", handleInput)
 
 def showText(value = "", _type = "narrator"):
 	# Checks if the text is not a string.
@@ -135,8 +149,17 @@ def showText(value = "", _type = "narrator"):
 			if position != 0:
 				words = words[:position] + "\n" + words[position:]
 
+	# Resets the wait time status for the other dialogs.
+	global cooldown
+	cooldown = True
+
 	# Displays each letter progressively with a waiting time between each one.
+	# And asks for a confirmation to continue (dialogs only).
 	for word in words:
+		if word == "\n":
+			keyboard.wait("enter")
+			cooldown = True
+
 		print(word, end = "")
 		time.sleep(cooldown and settings.FADE_TIME or 0)
 
@@ -148,34 +171,10 @@ def readField(data):
 	if note != "":
 		print("Note: " + note)
 
-	# Resets the wait time status for the other dialogs.
-	global cooldown
-	cooldown = True
-
 	#
 	if type == "narrator" or type == "dialog":
 		showText(data.get("data"), type)
 
-#
-# Captures keyboard input on another thread to avoid blocking the main thread.
-# Available only on Windows Systems (because of "msvcrt" library).
-# https://realpython.com/python-gil/#the-impact-on-multi-threaded-python-programs
-#
-from threading import Thread
-import platform
-
-if platform.system() == "Windows":
-	import msvcrt
-
-	def handleInput():
-		while True:
-			if msvcrt.getch():
-				global cooldown
-				cooldown = False
-
-	thread = Thread(target = handleInput)
-	thread.daemon = True
-	thread.start()
 
 #
 # End of file
