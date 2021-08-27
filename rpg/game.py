@@ -93,7 +93,7 @@ def loadStory(name):
 
 	# Waits for the user's confirmation to start reading.
 	print("Press something to continue...")
-	lib.tryGetInput("Tip: you have to press \"ENTER\" to display the dialogues.\n")
+	lib.tryGetInput("Tip: you have to press ENTER/SPACE to display/speed up the dialogues.\n")
 
 	playScript(script)
 
