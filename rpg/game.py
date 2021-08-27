@@ -118,7 +118,7 @@ def playScript(script):
 #
 # Story processing
 #
-import time, re, keyboard
+import time, re, keyboard, random
 
 cooldown = True
 
@@ -162,18 +162,48 @@ def showText(fieldValue = "", fieldType = "", shouldWait = True):
 		print(character, end = "")
 		time.sleep(cooldown and settings.FADE_TIME or 0)
 
+	# Waits for any user input.
+	if shouldWait == True:
+		keyboard.wait("enter")
+		print()
+
+def doAction(data):
+	#
+	showText("Action -> " + data.get("description", "@Description"))
+
+	#
+	requirement = data.get("requirement")
+
+	if not requirement:
+		return
+
+	if lib.tryGetNumber(requirement):
+		#
+		roll = random.randrange(1, 100)
+
+		showText("Roll <-> " + str(roll) + "/100 (>=" + str(requirement) + " required)")
+
+		if roll >= requirement:
+			showText("Action -> " + data.get("results", ["@Success"])[0])
+		else:
+			showText("Action <- " + data.get("results", ["@Failure"])[1])
+	else:
+		#
+		pass
+
 def readField(data):
 	# Checks if the field has notes.
 	type = data.get("type", "narrator")
 	note = data.get("note", "")
 
-	if note != "":
+	if note != "" and settings.DEBUG_MODE == True:
 		print("Note: " + note)
 
-	#
+	# Checks the field type.
 	if type == "narrator" or type == "dialog":
 		showText(data.get("data"), type)
-
+	elif type == "action":
+		doAction(data)
 
 #
 # End of file
