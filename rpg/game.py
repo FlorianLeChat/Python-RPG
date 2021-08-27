@@ -102,13 +102,13 @@ def loadStory(name):
 #
 import settings
 
-def playScript(script):
+def playScript(script, start = 1):
 	lib.consoleLog(message = "Start reading the script...")
 	print()
 
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
-	for index in range(1, len(script)):
+	for index in range(start, len(script)):
 		readField(script[str(index)])
 		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)
