@@ -112,7 +112,6 @@ def playScript(script):
 		readField(script[str(index)])
 		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)
-		print()
 
 	lib.consoleLog(message = "End of the script reading...")
 
@@ -130,24 +129,24 @@ def handleInput():
 
 keyboard.add_hotkey("space", handleInput)
 
-def showText(value = "", _type = "narrator"):
+def showText(fieldValue = "", fieldType = "", shouldWait = True):
 	# Checks if the text is not a string.
-	if type(value) is list:
-		words = " ".join(value)
+	if type(fieldValue) is list:
+		fieldValue = " ".join(fieldValue)
 
-	if _type == "narrator":
+	if fieldType == "narrator":
 		# Two points are placed to indicate that it's the narrator.
 		print("**", end = "")
-	elif _type == "dialog":
+	elif fieldType == "dialog":
 		# Search for all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
-		prefixes = re.findall("\w+:", words)
+		prefixes = re.findall("\w+:", fieldValue)
 
 		for prefix in prefixes:
-			position = words.find(prefix)
+			position = fieldValue.find(prefix)
 
 			if position != 0:
-				words = words[:position] + "\n" + words[position:]
+				fieldValue = fieldValue[:position] + "\n" + fieldValue[position:]
 
 	# Resets the wait time status for the other dialogs.
 	global cooldown
@@ -155,12 +154,12 @@ def showText(value = "", _type = "narrator"):
 
 	# Displays each letter progressively with a waiting time between each one.
 	# And asks for a confirmation to continue (dialogs only).
-	for word in words:
-		if word == "\n":
+	for character in fieldValue:
+		if character == "\n":
 			keyboard.wait("enter")
 			cooldown = True
 
-		print(word, end = "")
+		print(character, end = "")
 		time.sleep(cooldown and settings.FADE_TIME or 0)
 
 def readField(data):
