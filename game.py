@@ -113,31 +113,33 @@ def playScript(script):
 #
 # Story processing
 #
-import settings, time
+import settings, time, re
 
 cooldown = True
 
 def showText(value = "", _type = "narrator"):
+	# Checks if the text is not a string.
+	if type(value) is list:
+		words = " ".join(value)
+
 	if _type == "narrator":
-		# Checks if the text is not already a string.
-		if type(value) is list:
-			words = " ".join(value)
-		else:
-			words = list(value)
-
-		# Displays each letter progressively with
-		# a waiting time between each one.
+		# Two points are placed to indicate that it's the narrator.
 		print("**", end = "")
-
-		for word in words:
-			print(word, end = "")
-			time.sleep(cooldown and settings.FADE_TIME or 0)
 	elif _type == "dialog":
-		# Checks if the text is not already a list.
-		if type(value) is str:
-			words = list(value)
+		# Search for all prefixes like "<character name:>" before
+		# putting a line break ("\n") between each.
+		prefixes = re.findall("\w+:", words)
 
+		for prefix in prefixes:
+			position = words.find(prefix)
 
+			if position != 0:
+				words = words[:position] + "\n" + words[position:]
+
+	# Displays each letter progressively with a waiting time between each one.
+	for word in words:
+		print(word, end = "")
+		time.sleep(cooldown and settings.FADE_TIME or 0)
 
 def readField(data):
 	# Checks if the field has notes.
