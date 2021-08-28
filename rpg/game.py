@@ -48,6 +48,8 @@ def selectStory():
 #
 import json
 
+ACTUAL_STORY_NAME = ""
+
 def loadStory(name):
 	lib.consoleLog(message = "Do you want to load the story: \"" + name + "\"? (Y/N) ", newLine = "")
 
@@ -72,7 +74,11 @@ def loadStory(name):
 		selectStory()
 		return
 
+	# Saves the name of the story that is going to be read.
 	name = name.lower()
+
+	global ACTUAL_STORY_NAME
+	ACTUAL_STORY_NAME = name
 
 	# Loads the story file.
 	file = Path("./rpg/data/" + name + ".json")
@@ -133,12 +139,12 @@ def playScript(script, start = 1):
 #
 import time, re, keyboard, random, storage
 
-cooldown = True
+COOLDOWN = True
 
 def handleInput():
 	# Remove the delay between each field on a keyboard input.
-	global cooldown
-	cooldown = False
+	global COOLDOWN
+	COOLDOWN = False
 
 keyboard.add_hotkey("space", handleInput)
 
@@ -165,18 +171,18 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 		value = prefix + value
 
 	# Resets the wait time status for the other dialogs.
-	global cooldown
-	cooldown = True
+	global COOLDOWN
+	COOLDOWN = True
 
 	# Displays each letter progressively with a waiting time between each one.
 	# And asks for a confirmation to continue (dialogs only).
 	for character in value:
 		if character == "\n":
 			keyboard.wait("enter")
-			cooldown = True
+			COOLDOWN = True
 
 		print(character, end = "")
-		time.sleep(cooldown and settings.FADE_TIME or 0)
+		time.sleep(COOLDOWN and settings.FADE_TIME or 0)
 
 	# Waits for any user input.
 	if shouldWait == True:
@@ -205,7 +211,7 @@ def doAction(data):
 		# Retrieve the result of the previous scenes.
 		requirement = requirement.split("@")
 
-		result = storage.loadData(requirement[0], "0")
+		result = storage.loadData(ACTUAL_STORY_NAME, requirement[0], "0")
 		success = result == requirement[1]
 	else:
 		# No value is required, the result is displayed.
