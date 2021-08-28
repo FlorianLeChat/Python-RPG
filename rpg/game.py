@@ -202,8 +202,11 @@ def doAction(data):
 
 		showText("Roll <-> ", str(roll) + "/100 (>=" + str(requirement) + " required)")
 	elif requirement.find("@"):
-		#
-		pass
+		# Retrieve the result of the previous scenes.
+		requirement = requirement.split("@")
+
+		result = storage.loadData(requirement[0], "0")
+		success = result == requirement[1]
 	else:
 		# No value is required, the result is displayed.
 		success = True
