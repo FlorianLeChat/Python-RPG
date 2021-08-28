@@ -4,7 +4,7 @@
 from pathlib import Path
 import lib
 
-games = lib.findFiles("*.json", "./stories")
+games = lib.findFiles("*.json", "./rpg/data")
 titles = []
 
 for game in games:
@@ -15,12 +15,18 @@ def selectStory():
 	lib.consoleLog(message = "To begin, please write that you want to play.")
 
 	# Iterating through all the stories.
-	for index in range(len(titles)):
-		lib.consoleLog(message = str(index + 1) + "- " + titles[index])
+	length = len(titles)
 
-	name = lib.tryGetInput()
+	if length == 0:
+		lib.consoleLog(prefix = "Error", message = "No story found in the directory \"../rpg/data/\".")
+		exit()
+	else:
+		for title in titles:
+			print("- " + title)
 
 	# Checks if the input is valid.
+	name = lib.tryGetInput()
+
 	if not name:
 		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		selectStory()
