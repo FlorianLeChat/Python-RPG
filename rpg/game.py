@@ -67,24 +67,31 @@ def loadStory(name):
 		loadStory(name)
 		return
 
-	# Check if the answer is negative. The loading is cancelled.
+	# Checks if the answer is negative. The loading is cancelled.
 	if confirmation.strip() == "N":
 		selectStory()
 		return
 
 	name = name.lower()
 
-	lib.consoleLog(message = "Loading data...")
+	# Loads the story file.
+	file = Path("./rpg/data/" + name + ".json")
 
-	# Load the corresponding story file.
-	file = open("./rpg/data/" + name + ".json", "r", encoding = "utf-8")
+	if not file.exists():
+		lib.consoleLog(prefix = "Error", message = "Missing story file.")
+		selectStory()
+		return
+
+	file = file.open(encoding = "utf-8")
 	data = json.loads(file.read())
-	file.close()
 
+	lib.consoleLog(message = "Loading story data...")
+
+	# Checks if the story data is valid.
 	info, script = data.get("info"), data.get("script")
 
 	if not info or not script:
-		lib.consoleLog(prefix = "Error", message = "Game data error.")
+		lib.consoleLog(prefix = "Error", message = "Story data error.")
 		selectStory()
 		return
 
