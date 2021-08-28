@@ -131,7 +131,7 @@ def playScript(script, start = 1):
 #
 # Story processing
 #
-import time, re, keyboard, random
+import time, re, keyboard, random, storage
 
 cooldown = True
 
@@ -142,14 +142,14 @@ def handleInput():
 
 keyboard.add_hotkey("space", handleInput)
 
-def showText(value = "", _type = "", shouldWait = True):
+def showText(prefix = "", value = "", _type = "", shouldWait = True):
 	# Checks if the text is not a string.
 	if type(value) is list:
 		value = " ".join(value)
 
 	if _type == "narrator":
-		# Two points are placed to indicate that it's the narrator.
-		print("**", end = "")
+		# Prefix are placed to indicate that it's the narrator.
+		print(prefix, end = "")
 	elif _type == "dialog":
 		# Search for all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
@@ -160,6 +160,9 @@ def showText(value = "", _type = "", shouldWait = True):
 
 			if position > 0:
 				value = value[:position] + "\n" + value[position:]
+	else:
+		# Adds a prefix for the action fields.
+		value = prefix + value
 
 	# Resets the wait time status for the other dialogs.
 	global cooldown
@@ -182,7 +185,7 @@ def showText(value = "", _type = "", shouldWait = True):
 
 def doAction(data):
 	# Displays a description of the current situation before the action.
-	showText("Action -> " + data.get("description", "@Description"))
+	showText("Action -> ", data.get("description", "@Description"))
 
 	# Checks if there is a required value (to make a roll or remember a previous action).
 	requirement = data.get("requirement")
@@ -190,22 +193,26 @@ def doAction(data):
 	if not requirement:
 		return
 
+	success = False
+
 	if lib.tryGetNumber(requirement):
 		# Roll over 100 as if to simulate a probability.
 		roll = random.randrange(1, 100)
+		success = roll >= requirement
 
-		showText("Roll <-> " + str(roll) + "/100 (>=" + str(requirement) + " required)")
-
-		if roll >= requirement:
-			showText("Action <- " + data.get("results", ["@Success"])[0])
-		else:
-			showText("Action <- " + data.get("results", ["", "@Failed"])[1])
+		showText("Roll <-> ", str(roll) + "/100 (>=" + str(requirement) + " required)")
 	elif requirement.find("@"):
 		#
 		pass
 	else:
 		# No value is required, the result is displayed.
-		showText("Action <- " + data.get("results", "@Success"))
+		success = True
+
+	# Displays the result text for this action.
+	if success:
+		showText("Action <- ", data.get("results", ["", "@Success"])[1])
+	else:
+		showText("Action <- ", data.get("results", ["@Failed"])[0])
 
 def readField(data):
 	# Checks if the field has notes.
@@ -217,7 +224,7 @@ def readField(data):
 
 	# Checks the field type.
 	if type == "narrator" or type == "dialog":
-		showText(data.get("data"), type)
+		showText("**", data.get("data"), type)
 	elif type == "action":
 		doAction(data)
 
