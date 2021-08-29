@@ -209,7 +209,7 @@ def doAction(index, data):
 		showText("Roll <-> ", str(roll) + "/100 (>=" + str(requirement) + " required)")
 
 		# Saves the result of the action for the next scenes.
-		storage.saveData(ACTUAL_STORY_NAME, "actions", index, success and "2" or "1")
+		storage.saveData(ACTUAL_STORY_NAME, "actions", str(index), success and "2" or "1")
 	elif requirement.find("@"):
 		# Retrieve the result of the previous scenes.
 		requirement = requirement.split("@")
