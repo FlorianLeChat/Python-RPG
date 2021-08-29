@@ -9,7 +9,7 @@ cache = {}
 def saveFile():
 	# Opens the file in write mode before converting the
 	# JSON string into a Python object.
-	file = open(mode = "w", encoding = "utf-8")
+	file = open(settings.SAVE_FILE_NAME, mode = "w", encoding = "utf-8")
 
 	global cache
 	json.dump(cache, file, ensure_ascii = False, indent = 4)
@@ -40,22 +40,23 @@ def saveData(name, field, key = "none", value = ""):
 
 	if not data:
 		cache[name] = {}
-		debugLog(args = "Missing story \"" + name + "\" in cache, creating...")
+		debugLog(args = "Missing story \"" + str(name) + "\" in cache, creating...")
 
 	# Checks if the field is valid.
 	data = cache[name].get(field)
 
 	if not data:
 		cache[name][field] = {}
-		debugLog(args = "Missing field \"" + field + "\" in cache, creating...")
+		debugLog(args = "Missing field \"" + str(field) + "\" in cache, creating...")
 
 	# Checks if the value requires a key to be saved
 	# or directly a save in the field.
 	if key != "none":
 		cache[name][field][key] = value
-		debugLog(args = "Missing key \"" + key + "\" in cache, creating...")
+		debugLog(prefix = "Info", args = "Insert the key \"" + str(key) + "\" with the value \"" + str(value) + "\".")
 	else:
 		cache[name][field] = value
+		debugLog(prefix = "Info", args = "Insert the key \"" + str(field) + "\" with the value \"" + str(value) + "\".")
 
 	# Finally saves the file after the transaction.
 	saveFile()
@@ -77,9 +78,14 @@ def loadData(name, field, key = "none", fallback = ""):
 		return fallback
 
 	# Returns the value in the field key or its name.
-	debugLog(prefix = "Info", args = "Data retrieved: \"" + field + "\" -> \"" + key + "\" @ " + name.capitalize())
+	name = name.capitalize()
 
-	return key != "none" and index.get(key, fallback) or index
+	if key != "none":
+		debugLog(prefix = "Info", args = "Data retrieved: \"" + str(field) + "\" -> \"" + str(key) + "\" @ " + name)
+		return index.get(key, fallback)
+	else:
+		debugLog(prefix = "Info", args = "Data retrieved: \"" + str(field) + "\" -> \"" + str(index) + "\" @ " + name)
+		return index
 
 #
 # End of file
