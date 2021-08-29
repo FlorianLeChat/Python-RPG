@@ -128,7 +128,7 @@ def playScript(script, start = 1):
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
 	for index in range(start, len(script)):
-		readField(script[str(index)])
+		readField(index, script[str(index)])
 		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)
 
@@ -189,7 +189,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 		keyboard.wait("enter")
 		print()
 
-def doAction(data):
+def doAction(index, data):
 	# Displays a description of the current situation before the action.
 	showText("Action -> ", data.get("description", "@Description"))
 
@@ -207,6 +207,9 @@ def doAction(data):
 		success = roll >= requirement
 
 		showText("Roll <-> ", str(roll) + "/100 (>=" + str(requirement) + " required)")
+
+		# Saves the result of the action for the next scenes.
+		storage.saveData(ACTUAL_STORY_NAME, "actions", index, success and "2" or "1")
 	elif requirement.find("@"):
 		# Retrieve the result of the previous scenes.
 		requirement = requirement.split("@")
@@ -223,7 +226,7 @@ def doAction(data):
 	else:
 		showText("Action <- ", data.get("results", ["@Failed"])[0])
 
-def readField(data):
+def readField(index, data):
 	# Checks if the field has notes.
 	type = data.get("type", "narrator")
 	note = data.get("note", "")
@@ -235,7 +238,7 @@ def readField(data):
 	if type == "narrator" or type == "dialog":
 		showText("**", data.get("data"), type)
 	elif type == "action":
-		doAction(data)
+		doAction(index, data)
 
 #
 # End of file
