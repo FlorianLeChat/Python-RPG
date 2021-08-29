@@ -7,17 +7,14 @@ import json, settings, lib
 cache = {}
 
 def saveFile():
-	file = Path(settings.SAVE_FILE_NAME)
+	# Opens the file in write mode before converting the
+	# JSON string into a Python object.
+	file = open(mode = "w", encoding = "utf-8")
 
-	if file.exists():
-		# Opens the file in write mode before converting the
-		# JSON string into a Python object.
-		file = file.open(mode = "w", encoding = "utf-8")
+	global cache
+	json.dump(cache, file, ensure_ascii = False, indent = 4)
 
-		global cache
-		json.dump(cache, file, ensure_ascii = False, indent = 4)
-
-		file.close()
+	file.close()
 
 def loadFile():
 	file = Path(settings.SAVE_FILE_NAME)
@@ -42,27 +39,27 @@ def saveData(name, field, key = "none", value = ""):
 	data = cache.get(name)
 
 	if not data:
-		debugLog(args = "Missing story \"" + name + "\" in cache, creating...")
 		cache[name] = {}
+		debugLog(args = "Missing story \"" + name + "\" in cache, creating...")
 
 	# Checks if the field is valid.
 	data = cache[name].get(field)
 
 	if not data:
-		debugLog(args = "Missing field \"" + field + "\" in cache, creating...")
 		cache[name][field] = {}
+		debugLog(args = "Missing field \"" + field + "\" in cache, creating...")
 
 	# Checks if the value requires a key to be saved
 	# or directly a save in the field.
 	if key != "none":
-		debugLog(args = "Missing key \"" + key + "\" in cache, creating...")
 		cache[name][field][key] = value
+		debugLog(args = "Missing key \"" + key + "\" in cache, creating...")
 	else:
 		cache[name][field] = value
 
 	# Finally saves the file after the transaction.
-	debugLog(prefix = "Info", args = "Cache file successfully saved.")
 	saveFile()
+	debugLog(prefix = "Info", args = "Cache file successfully saved.")
 
 def loadData(name, field, key = "none", fallback = ""):
 	# Loads the data and checks if they are valid.
@@ -79,9 +76,9 @@ def loadData(name, field, key = "none", fallback = ""):
 		debugLog(args = "The previous scene data is incomplete or invalid.")
 		return fallback
 
+	# Returns the value in the field key or its name.
 	debugLog(prefix = "Info", args = "Data retrieved: \"" + field + "\" -> \"" + key + "\" @ " + name.capitalize())
 
-	# Returns the value in the field key or its name.
 	return key != "none" and index.get(key, fallback) or index
 
 #
