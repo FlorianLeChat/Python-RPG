@@ -56,9 +56,9 @@ def selectGamemode():
 		selectGamemode()
 		return
 
+	# Checks the gamemode selection before redirecting it to the appropriate file.
 	selection = int(selection)
 
-	# Checks the gamemode selection before redirecting it to the appropriate file.
 	if selection == 1:
 		importlib.import_module("game")
 	elif selection == 2:
