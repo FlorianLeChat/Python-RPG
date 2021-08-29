@@ -125,12 +125,22 @@ def playScript(script, start = 1):
 	lib.consoleLog(message = "Start reading the script...")
 	print()
 
+	# Recover the old position of the story if possible.
+	lastIndex = storage.loadData(ACTUAL_STORY_NAME, "lastIndex", fallback = 1)
+
+	if lastIndex != 1:
+		lib.consoleLog(message = "Retrieving the previous position: " + str(lastIndex))
+		start = int(lastIndex)
+
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
 	for index in range(start, len(script)):
 		readField(index, script[str(index)])
 		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)
+
+	# Removes the old position at the end of the story.
+	storage.saveData(ACTUAL_STORY_NAME, "lastIndex", value = None)
 
 	lib.consoleLog(message = "End of the script reading...")
 
