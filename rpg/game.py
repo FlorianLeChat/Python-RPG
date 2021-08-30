@@ -280,7 +280,7 @@ if platform.system() == "Windows":
 	def handleFocus():
 		while True:
 			global WINDOW_IS_FOCUSED
-			WINDOW_IS_FOCUSED = GetWindowText(GetForegroundWindow()).find("Python-RPG") != -1
+			WINDOW_IS_FOCUSED = "python-rpg" in GetWindowText(GetForegroundWindow()).lower()
 
 	thread = Thread(target = handleFocus)
 	thread.daemon = True
