@@ -74,10 +74,10 @@ def selectGamemode():
 # Program end signal
 # https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python
 #
-import signal
+import signal, sys
 
 def exitHandler(signum, frame):
-	exit()
+	sys.exit()
 
 signal.signal(signal.SIGINT, exitHandler)
 
