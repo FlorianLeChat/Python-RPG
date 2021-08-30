@@ -201,7 +201,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 			checkKey("enter")
 			COOLDOWN = True
 
-		print(character, end = "")
+		print(character, end = "", flush = True)
 		time.sleep(COOLDOWN and settings.FADE_TIME or 0)
 
 	# Waits for any user input.
