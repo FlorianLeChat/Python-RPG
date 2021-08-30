@@ -135,6 +135,7 @@ def playScript(script, start = 1):
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
 	for index in range(start, len(script)):
+		storage.saveData(ACTUAL_STORY_NAME, "lastIndex", value = index)
 		readField(index, script[str(index)])
 		lib.tryGetInput()
 		time.sleep(settings.WAIT_TIME)

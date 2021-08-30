@@ -1,5 +1,5 @@
 # Skip some of the boring checks.
-DEBUG_MODE = True
+DEBUG_MODE = False
 
 # Time between each word display when reading a story.
 # (In milliseconds, implicit conversion)
