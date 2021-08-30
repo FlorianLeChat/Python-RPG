@@ -1,5 +1,5 @@
 #
-# Internal storage
+# Save file handling
 #
 from pathlib import Path
 import json, settings, lib
@@ -29,6 +29,9 @@ def loadFile():
 
 		file.close()
 
+#
+# Save data handling
+#
 def debugLog(prefix = "Error", args = ""):
 	# Only in debug mode.
 	if settings.DEBUG_MODE == True and args != "":
