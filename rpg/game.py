@@ -22,7 +22,8 @@ def selectStory():
 		exit()
 	else:
 		for title in titles:
-			print("- " + title)
+			if title != "__internal__":
+				print("- " + title)
 
 	# Checks if the input is valid.
 	name = lib.tryGetInput()
