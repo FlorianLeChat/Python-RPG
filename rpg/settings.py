@@ -9,4 +9,4 @@ FADE_TIME = 25 / 1000
 WAIT_TIME = 1
 
 # Name of the data save file.
-SAVE_FILE_NAME = "./rpg/data/__internal__.json"
+SAVE_FILE_NAME = "./data/__internal__.json"

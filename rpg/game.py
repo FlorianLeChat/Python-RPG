@@ -18,8 +18,8 @@ def selectStory():
 	length = len(titles)
 
 	if length == 0:
-		lib.consoleLog(prefix = "Error", message = "No story found in the directory \"../rpg/data/\".")
 		exit()
+		lib.consoleLog(prefix = "Error", message = "No story found in the \"../data/\" directory.")
 	else:
 		for title in titles:
 			if title != "__internal__":
@@ -33,15 +33,13 @@ def selectStory():
 		selectStory()
 		return
 
-	name = name.capitalize()
-
 	# Checks if the input refers to one of the titles in memory.
 	for title in titles:
-		if name.find(title) != -1:
+		if name in title.lower():
 			loadStory(title)
 			return
 
-	lib.consoleLog(prefix = "Error", message = "Unable to find the story \"" + name + "\".")
+	lib.consoleLog(prefix = "Error", message = "Unable to find the story \"" + name.capitalize() + "\".")
 	selectStory()
 
 #
@@ -75,7 +73,7 @@ def loadStory(name):
 	ACTUAL_STORY_NAME = name
 
 	# Loads the story file.
-	file = Path("./rpg/data/" + name + ".json")
+	file = Path("./data/" + name + ".json")
 
 	if not file.exists():
 		lib.consoleLog(prefix = "Error", message = "Missing story file.")
