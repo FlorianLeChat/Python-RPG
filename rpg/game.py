@@ -2,7 +2,7 @@
 # Story selection
 #
 from pathlib import Path
-import lib, os
+import lib, os, sys
 
 games = lib.findFiles("*.json", os.getcwd())
 titles = []
@@ -18,8 +18,8 @@ def selectStory():
 	length = len(titles)
 
 	if length == 0:
-		exit()
 		lib.consoleLog(prefix = "Error", message = "No story found in the \"../data/\" directory.")
+		sys.exit()
 	else:
 		for title in titles:
 			if title != "__internal__":
