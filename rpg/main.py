@@ -77,7 +77,7 @@ def selectGamemode():
 import signal
 
 def exitHandler(signum, frame):
-	exit(0)
+	exit()
 
 signal.signal(signal.SIGINT, exitHandler)
 
