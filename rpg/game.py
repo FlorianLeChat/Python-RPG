@@ -153,8 +153,10 @@ COOLDOWN = True
 
 def handleInput():
 	# Remove the delay between each field on a keyboard input.
-	global COOLDOWN
-	COOLDOWN = False
+	# Only if the window is focused.
+	if WINDOW_IS_FOCUSED:
+		global COOLDOWN
+		COOLDOWN = False
 
 keyboard.add_hotkey("space", handleInput)
 
@@ -188,7 +190,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 	# And asks for a confirmation to continue (dialogs only).
 	for character in value:
 		if character == "\n":
-			keyboard.wait("enter")
+			checkKey("enter")
 			COOLDOWN = True
 
 		print(character, end = "")
@@ -196,7 +198,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 
 	# Waits for any user input.
 	if shouldWait == True:
-		keyboard.wait("enter")
+		checkKey("enter")
 		print()
 
 def doAction(index, data):
@@ -249,6 +251,32 @@ def readField(index, data):
 		showText("**", data.get("data"), type)
 	elif type == "action":
 		doAction(index, data)
+
+#
+# Retrieves the active window to avoid accidentally pressing keys.
+# https://github.com/boppreh/keyboard/issues/413#issuecomment-779062327
+#
+from win32gui import GetWindowText, GetForegroundWindow
+from threading import Thread
+import platform
+
+WINDOW_IS_FOCUSED = True
+
+if platform.system() == "Windows":
+	def checkKey(name):
+		global WINDOW_IS_FOCUSED
+
+		while WINDOW_IS_FOCUSED == False:
+			keyboard.wait(name)
+
+	def handleFocus():
+		while True:
+			global WINDOW_IS_FOCUSED
+			WINDOW_IS_FOCUSED = GetWindowText(GetForegroundWindow()).find("Python-RPG") != -1
+
+	thread = Thread(target = handleFocus)
+	thread.daemon = True
+	thread.start()
 
 #
 # End of file
