@@ -2,9 +2,9 @@
 # Story selection
 #
 from pathlib import Path
-import lib
+import lib, os
 
-games = lib.findFiles("*.json", "./rpg/data")
+games = lib.findFiles("*.json", os.getcwd())
 titles = []
 
 for game in games:
@@ -289,5 +289,4 @@ if platform.system() == "Windows":
 #
 # End of file
 #
-#selectGame()
-loadStory("Cuban")
+selectStory()
