@@ -65,7 +65,7 @@ def selectGamemode():
 		lib.consoleLog(message = "Not Yet Implemented.")
 		pass # NYI
 	elif selection == 3:
-		importlib.import_module("test")
+		importlib.import_module("testing")
 	else:
 		lib.consoleLog(prefix = "Error", message = "Unable to find the gamemode.")
 		selectGamemode()
