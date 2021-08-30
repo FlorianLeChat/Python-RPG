@@ -54,19 +54,12 @@ ACTUAL_STORY_NAME = ""
 def loadStory(name):
 	lib.consoleLog(message = "Do you want to load the story: \"" + name + "\"? (Y/N) ", newLine = "")
 
-	# Checks if the input is valid.
-	confirmation = lib.tryGetInput()
-
-	if not confirmation:
-		lib.consoleLog(prefix = "Error", message = "Invalid input.")
-		loadStory(name)
-		return
-
-	confirmation = confirmation.upper()
-
 	# Checks if the input means "yes" or "no".
 	# Repeats until it has a correct value.
+	confirmation = lib.tryGetInput().upper()
+
 	if not confirmation or (confirmation != "Y" and confirmation != "N"):
+		lib.consoleLog(prefix = "Error", message = "Invalid input.")
 		loadStory(name)
 		return
 
