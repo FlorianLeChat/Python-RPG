@@ -94,3 +94,11 @@ if settings.DEBUG_MODE == False:
 	checkPassword()
 
 selectGamemode()
+
+#
+# End of program
+#
+import keyboard
+
+print("The story is over, thanks for using my program! :D")
+keyboard.wait()
