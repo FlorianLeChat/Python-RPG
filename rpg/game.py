@@ -123,8 +123,21 @@ def playScript(script, start = 1):
 	lastIndex = storage.loadData(ACTUAL_STORY_NAME, "lastIndex", fallback = 1)
 
 	if lastIndex != 1:
-		lib.consoleLog(message = "Retrieving the previous position: " + str(lastIndex))
-		start = int(lastIndex)
+		lib.consoleLog(message = "Do you want to load the last position in this story? (Y/N) ", newLine = "")
+
+		# Checks if the input means "yes" or "no".
+		# Repeats until it has a correct value.
+		confirmation = lib.tryGetInput().upper()
+
+		if not confirmation or (confirmation != "Y" and confirmation != "N"):
+			lib.consoleLog(prefix = "Error", message = "Invalid input.")
+			playScript(script)
+			return
+
+		# If the answer is positive, then the old position is restored.
+		if confirmation.strip() == "Y":
+			lib.consoleLog(message = "Restoring the old position: " + str(lastIndex))
+			start = int(lastIndex)
 
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
