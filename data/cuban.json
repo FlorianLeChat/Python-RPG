@@ -1,0 +1,112 @@
+{
+	"info":
+	{
+		"author": "Florian Dubois",
+		"language": "french",
+		"title": "Les folles aventures d'Asdaroth.",
+		"description": "Asdaroth apprend que son meilleur ami a eu des relations sexuelles avec sa soeur, il veut à tout prix se venger."
+	},
+
+	"script":
+	{
+		"0": {
+			"type": "narrator",
+			"data": [
+				"C'était une belle journée d'été, à Hyères, Asdaroth venait de se lever et déjà il pensait à sa petite soeurette.",
+				"Comme à son habitude, il saisit son iPhone 12 Pro Max acheté avec l'argent durement ramené du Spar pour se rendre sur youporn.",
+				"Après avoir fait sa petite affaire, Asdaroth se lève et commence sa longue session gaming en se connectant sur TeamSpeak.",
+				"Étant donné qu'il était déjà 11 heures du matin, seuls deux branleurs étaient connectés : Corentin et Florian.",
+				"Les salutations faites, Asdaroth lance son jeu favori : League of Legends.",
+				"Après quelques parties infructueuses et avoir fait mute tout le salon vocal à cause de sa rage, Asdaroth quitte son siège",
+				"pour se rendre dans le salon. En descendant, Asdaroth reçoit un appel de son meilleur ami de tous les temps : Cuban Rotation !"
+			]
+		},
+
+		"1": {
+			"type": "dialog",
+			"note": "Dans cette scène, Asdaroth et Cuban s'engueulent.",
+			"data": [
+				"Asdaroth: Ouais tu veux quoi gros shag de merde ?",
+				"Cuban: Quoi, j'ai plus droit de te parler maintenant ?",
+				"Asdaroth: Ok c'est bon tu m'as bandé.",
+				"Cuban: Ouais non je déconne, je voulais te dire quelque chose.",
+				"Asdaroth: *Silence*",
+				"Cuban: Allô ?",
+				"Asdaroth: Bah vas-y explique !",
+				"Cuban: J'ai baisé ta baby-soeuuuuuurrrrrr !",
+				"Asdaroth: Quoi t'es sérieux ? Attend, je vais t'enculer.",
+				"Cuban: Tu vas rien faire.",
+				"Asdaroth: J'en ai vraiment marre de toi fils de pute !",
+				"Cuban: Ta gueule petite merde.",
+				"Asdaroth: *Raccroche le téléphone*"
+			]
+		},
+
+		"2": {
+			"type": "narrator",
+			"data": [
+				"À la fin de l'appel, Asdaroth très énervé, gueule « JE VAIS L'ENCULER » !",
+				"De manière presque frénétique, il prend sa voiture bridée à 50 KM/H pour se rendre à la gare.",
+				"Esquivant les contrôleurs et les agents de sécurité, Asdaroth s'infiltre dans le premier train vers Lyon en quête de vengeance.",
+				"Pendant ce long voyage de 4 heures en TGV, il prépare ses techniques de combat dans les toilettes, il manque d'ailleurs à",
+				"plusieurs reprises de casser le matériel à l'intérieur. Mais Asdaroth est tellement fou qu'il continue jusqu'à son arrivée.",
+				"En sortant de la gare « Lyon Part-Dieu », il s'approche d'un taxi avant de lui voler sa voiture comme sur FlashLand.",
+				"Mais étant donné que ce n'est pas un jeu vidéo, il se fait courser par les amis gitans du taxi pour essayer de faire sortir Asdaroth.",
+				"Fort de son entraînement chez les marins, il parvient toutefois à s'échapper avec le véhicule et active le GPS vers Écully.",
+				"Durant son intrépide trajet, Asdaroth esquive à plusieurs reprises les radars et barrages routiers de la Gendarmerie.",
+				"Près d'une demi-heure après son arrivée, il cherche désespéremment où habite Cubuluflux.. mais au plus grand des hasards, il semble",
+				"trouver une correspondance d'une personne marchant dans la rue : beau gosse, des lunettes d'aviateurs, des prostitués autour de lui,",
+				"et une démarche assurée. Asdaroth est catégorique, cette personne est Cuban Rotation, le baiseur de Jenna.",
+				"Fou de rage, il sort de sa voiture avant de s'élancer comme dans une épreuve olympique vers lui."
+			]
+		},
+
+		"3": {
+			"type": "action",
+			"note": "Asdaroth est face à face avec Cuban, ils sont tous les deux prêts pour l'affrontement.",
+			"description": "Asdaroth court comme un ninja vers sa proie avant de donner une giga gifle vers le beau visage de Cuban.",
+			"requirement": 70,
+			"results": [
+				"D'un geste instinctif, une des prostitués prend la gifle destinée pour Cuban et tombe au sol.",
+				"Asdaroth parvient à donner sa gifle juste avant qu'une prostitué tente de s'interposer."
+			]
+		},
+
+		"4": {
+			"type": "dialog",
+			"note": "Comme c'est la bagarre, Cuban va vouloir se venger.",
+			"data": [
+				"Asdaroth: Prend ça grosse merde !",
+				"Cuban: Attend, je vais te rafle pélo.",
+				"Asdaroth: Quoi ? T'as pas d'arme de tout de façon.",
+				"Cuban: Bah regarde moi bien fils de pute."
+			]
+		},
+
+		"5": {
+			"type": "action",
+			"note": "Comme c'est la bagarre, Cuban va se venger à son tour.",
+			"description": "Cuban sors de son gros cul un M4 avant de le pointer en direction d'Asdaroth.",
+			"requirement": "3@1",
+			"results": [
+				[
+					"Cuban appuie sur la détente, rafallant la giga tête d'Asdaroth.",
+					"Ayant frappé malencontreusement la prostitué tout à l'heure, il n'a plus de force pour se défendre.",
+					"Il tombe alors au sol pour se vider de son sang.. quel con !"
+				],
+				"Malgré la grande vivacité de Cuban, Asdaroth parvient à esquiver toutes les balles."
+			]
+		},
+
+		"6": {
+			"type": "narrator",
+			"note": "La bagarre est terminée. Les deux protagonistes se séparent.",
+			"data": [
+				"À la fin de ce combat épique, les deux protagonistes se serrent la main avant de se séparer.",
+				"Dans leur conscience, ils pensent déjà à la revanche, mais ça sera pour une prochaine fois..",
+				"Asdaroth va rentrer à Hyères pour pleurer la virginité de sa soeur.",
+				"Cuban quant à lui continue à baiser des putes et à brasser au maximax."
+			]
+		}
+	}
+}
