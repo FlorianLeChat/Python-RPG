@@ -115,7 +115,6 @@ import settings
 
 def playScript(script, start = 1):
 	lib.consoleLog(message = "Start reading the script...")
-	print()
 
 	# Recover the old position of the story if possible.
 	lastIndex = storage.loadData(ACTUAL_STORY_NAME, "lastIndex", fallback = 1)
@@ -136,6 +135,8 @@ def playScript(script, start = 1):
 		if confirmation.strip() == "Y":
 			lib.consoleLog(message = "Restoring the old position: " + str(lastIndex))
 			start = int(lastIndex)
+
+	print()
 
 	# Iterating across all lines of the story.
 	# And asks for a confirmation to continue.
@@ -178,12 +179,14 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 		# Search for all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
 		prefixes = re.findall("\w+:", value)
+		character = 0
 
 		for prefix in prefixes:
-			position = value.find(prefix)
+			position = value.find(prefix, character)
 
 			if position > 0:
-				value = value[:position] + "\n" + value[position:]
+				character = position + 1
+				value = value[:position - 1] + "\n" + value[position:]
 	else:
 		# Adds a prefix for the action fields.
 		value = prefix + value
