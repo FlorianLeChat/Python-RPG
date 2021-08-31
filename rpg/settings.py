@@ -3,7 +3,7 @@ DEBUG_MODE = False
 
 # Time between each word display when reading a story.
 # (In milliseconds, implicit conversion)
-FADE_TIME = 25 / 1000
+FADE_TIME = 35 / 1000
 
 # Time between each field reading (in seconds).
 WAIT_TIME = 1
