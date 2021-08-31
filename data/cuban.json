@@ -77,7 +77,7 @@
 			"note": "Comme c'est la bagarre, Cuban va vouloir se venger.",
 			"data": [
 				"Asdaroth: Prend ça grosse merde !",
-				"Cuban: Attend, je vais te rafle pélo.",
+				"Cuban: Attend, je vais te rafale pélo.",
 				"Asdaroth: Quoi ? T'as pas d'arme de tout de façon.",
 				"Cuban: Bah regarde moi bien fils de pute."
 			]
@@ -89,12 +89,12 @@
 			"description": "Cuban sors de son gros cul un M4 avant de le pointer en direction d'Asdaroth.",
 			"requirement": "3@1",
 			"results": [
+				"Malgré la grande vivacité de Cuban, Asdaroth parvient à esquiver toutes les balles.",
 				[
 					"Cuban appuie sur la détente, rafallant la giga tête d'Asdaroth.",
 					"Ayant frappé malencontreusement la prostitué tout à l'heure, il n'a plus de force pour se défendre.",
 					"Il tombe alors au sol pour se vider de son sang.. quel con !"
-				],
-				"Malgré la grande vivacité de Cuban, Asdaroth parvient à esquiver toutes les balles."
+				]
 			]
 		},
 
