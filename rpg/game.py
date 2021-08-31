@@ -26,7 +26,7 @@ def selectStory():
 				print("- " + title)
 
 	# Checks if the input is valid.
-	name = lib.tryGetInput()
+	name = lib.tryGetInput().lower()
 
 	if not name:
 		lib.consoleLog(prefix = "Error", message = "Invalid input.")
