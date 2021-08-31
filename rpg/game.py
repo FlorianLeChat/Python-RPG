@@ -113,13 +113,13 @@ def loadStory(name):
 #
 import settings
 
-def playScript(script, start = 1):
+def playScript(script, start = 0):
 	lib.consoleLog(message = "Start reading the script...")
 
 	# Recover the old position of the story if possible.
-	lastIndex = storage.loadData(ACTUAL_STORY_NAME, "lastIndex", fallback = 1)
+	lastIndex = storage.loadData(ACTUAL_STORY_NAME, "lastIndex", fallback = 0)
 
-	if lastIndex != 1:
+	if lastIndex != 0:
 		lib.consoleLog(message = "Do you want to load the last position in this story? (Y/N) ", newLine = "")
 
 		# Checks if the input means "yes" or "no".
@@ -174,7 +174,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 
 	if _type == "narrator":
 		# Prefix are placed to indicate that it's the narrator.
-		print(prefix, end = "")
+		print(prefix, end = "", flush = True)
 
 		# Searches all paragraphs before inserting a special character as a delimiter.
 		# https://stackoverflow.com/a/65853729 / https://en.wikipedia.org/wiki/Non-breaking_space
