@@ -232,12 +232,7 @@ def doAction(index, data):
 	showText("Action -> ", data.get("description", "@Description"))
 
 	# Checks if there is a required value (to make a roll or remember a previous action).
-	requirement = data.get("requirement")
-
-	if not requirement:
-		return
-
-	success = False
+	requirement = data.get("requirement", "")
 
 	if lib.tryGetNumber(requirement):
 		# Roll over 100 as if to simulate a probability.
@@ -248,7 +243,7 @@ def doAction(index, data):
 
 		# Saves the result of the action for the next scenes.
 		storage.saveData(ACTUAL_STORY_NAME, "actions", str(index), success and "2" or "1")
-	elif requirement.find("@"):
+	elif "@" in requirement:
 		# Retrieve the result of the previous scenes.
 		requirement = requirement.split("@")
 
