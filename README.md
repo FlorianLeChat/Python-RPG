@@ -21,7 +21,7 @@ I created this program to learn this programming language and it's possible (eve
 
 First, go to the `data` folder and create a folder with a pretty explicit name so you can find it later. For example, we will create the file `sunday.json` (if you can't change the extension, copy/paste an existing file or go [here](https://helpdeskgeek.com/windows-10/how-to-change-file-type-in-windows-10/)).
 
-Ensuite, copier/coller ceci avant de remplir les informations de votre histoire entre "< >".
+Then copy/paste this before filling in your story information between "< >".
 ```
 {
 	"info":
