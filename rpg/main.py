@@ -33,7 +33,7 @@ def checkPassword():
 #
 import importlib
 
-modes = ["RPG Story Reader [WIP]", "RPG Story Creator [NYI]", "Debug/Test [OK]"]
+modes = ["RPG Story Reader", "RPG Story Creator [WIP]", "Debug/Test"]
 
 def selectGamemode():
 	lib.consoleLog(message = "Which gamemode do you want to use now?")
