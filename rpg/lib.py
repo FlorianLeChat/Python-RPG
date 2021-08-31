@@ -1,11 +1,10 @@
 #
-# Try to check if the input is a number
-# https://stackoverflow.com/questions/1265665/how-can-i-check-if-a-string-represents-an-int-without-using-try-except
+# Try to check if the input is a number.
+# https://stackoverflow.com/a/1267145
 #
-def tryGetNumber(value):
+def tryGetNumber(value = ""):
 	try:
-		int(value)
-		return True
+		return int(value)
 	except ValueError:
 		return False
 
@@ -27,7 +26,7 @@ def consoleLog(prefix = "Info", message = "", newLine = "\n"):
 
 #
 # Returns a list of files inside a single folder.
-# https://stackoverflow.com/questions/1724693/find-a-file-in-python
+# https://stackoverflow.com/a/1724723
 #
 import os, fnmatch
 
