@@ -175,10 +175,22 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 	if _type == "narrator":
 		# Prefix are placed to indicate that it's the narrator.
 		print(prefix, end = "")
+
+		# Searches all paragraphs before inserting a special character as a delimiter.
+		# https://stackoverflow.com/a/65853729 / https://en.wikipedia.org/wiki/Non-breaking_space
+		phrases = re.findall(r"\b[^.!?]+[.!?]+", value)
+		character = 0
+
+		for phrase in phrases:
+			position = value.rfind(phrase, character)
+
+			if position > 0:
+				character = position + 1
+				value = value[:position - 1] + " " + value[position:]
 	elif _type == "dialog":
-		# Search for all prefixes like "<character name:>" before
+		# Searches all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
-		prefixes = re.findall("\w+:", value)
+		prefixes = re.findall(r"\w+:", value)
 		character = 0
 
 		for prefix in prefixes:
@@ -196,9 +208,9 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 	COOLDOWN = True
 
 	# Displays each letter progressively with a waiting time between each one.
-	# And asks for a confirmation to continue (dialogs only).
+	# And asks for a confirmation to continue.
 	for character in value:
-		if character == "\n":
+		if character == "\n" or character == " ":
 			checkKey("enter")
 			COOLDOWN = True
 
