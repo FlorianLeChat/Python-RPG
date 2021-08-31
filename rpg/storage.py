@@ -23,9 +23,11 @@ def loadFile():
 		# Opens the file in read mode before converting the
 		# cache to a JSON string for saving.
 		file = file.open(mode = "r", encoding = "utf-8")
+		json = lib.tryGetJSON(file.read())
 
-		global CACHE
-		CACHE = json.loads(file.read())
+		if json:
+			global CACHE
+			CACHE = json
 
 		file.close()
 

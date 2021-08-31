@@ -19,6 +19,18 @@ def tryGetInput(prompt = ""):
 		return False
 
 #
+# Checks if the string is a loadable JSON object.
+# https://stackoverflow.com/a/5508597
+#
+import json
+
+def tryGetJSON(value = ""):
+	try:
+		return json.loads(value)
+	except ValueError:
+		return False
+
+#
 # Displays a message in the output terminal formatted for the RPG project.
 #
 def consoleLog(prefix = "Info", message = "", newLine = "\n"):

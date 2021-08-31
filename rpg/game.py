@@ -81,7 +81,12 @@ def loadStory(name):
 		return
 
 	file = file.open(encoding = "utf-8")
-	data = json.loads(file.read())
+	data = lib.tryGetJSON(file.read())
+
+	if not data:
+		lib.consoleLog(prefix = "Error", message = "Invalid JSON data.")
+		selectStory()
+		return
 
 	lib.consoleLog(message = "Loading story data...")
 
