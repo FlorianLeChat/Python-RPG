@@ -21,7 +21,7 @@ def checkPassword():
 		return
 
 	# Checks if the input matches "27412".
-	if int(value) != 27412:
+	if value != 27412:
 		lib.consoleLog(prefix = "Error", message = "Password is incorrect.")
 		checkPassword();
 		return
@@ -57,8 +57,6 @@ def selectGamemode():
 		return
 
 	# Checks the gamemode selection before redirecting it to the appropriate file.
-	selection = int(selection)
-
 	if selection == 1:
 		importlib.import_module("game")
 	elif selection == 2:
