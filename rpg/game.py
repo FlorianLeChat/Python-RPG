@@ -275,6 +275,7 @@ if platform.system() == "Windows":
 	def checkKey(name):
 		global WINDOW_IS_FOCUSED
 
+		keyboard.wait(name)
 		while WINDOW_IS_FOCUSED == False:
 			keyboard.wait(name)
 
