@@ -196,7 +196,7 @@ def showText(prefix = "", value = "", _type = "", shouldWait = True):
 	elif _type == "dialog":
 		# Searches all prefixes like "<character name:>" before
 		# putting a line break ("\n") between each.
-		prefixes = re.findall(r"\w+:", value)
+		prefixes = re.findall(r"[\w-]+:", value)
 		character = 0
 
 		for prefix in prefixes:
