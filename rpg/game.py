@@ -102,6 +102,7 @@ def loadStory(name):
 	print()
 	print("~ " + info.get("title", "@Title") + " ~")
 	print("By " + info.get("author", "@Author"))
+	print("Category: " + info.get("category", "@Category"))
 	print("Language: " + info.get("language", "@Language"))
 	print()
 	print("-> " + info.get("description", "@Description"))
@@ -287,6 +288,7 @@ if platform.system() == "Windows":
 	def checkKey(name):
 		global WINDOW_IS_FOCUSED
 
+		# Asks a first time before checking if the window is focused.
 		keyboard.wait(name)
 		while WINDOW_IS_FOCUSED == False:
 			keyboard.wait(name)
