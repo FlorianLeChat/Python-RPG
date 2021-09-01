@@ -6,6 +6,8 @@ At the moment, the program is written entirely in [Python](https://www.python.or
 
 I created this program to learn this programming language and it's possible (even **probable**) that there are beginner and obvious mistakes, so I am quite open to improve this code via pull requests. Moreover, if you want to create stories, you must use the `data` folder for this purpose and then create a [JSON](https://en.wikipedia.org/wiki/JSON) file to write your story. If you don't know where to start, use the [default stories](https://github.com/FlorianLeChat/Python-RPG/tree/master/data) available. Don't be afraid to make mistakes, the program has some safeguards to prevent loading wrong stories. I will make sure in the future that you can create stories directly in the program.
 
+![image](https://user-images.githubusercontent.com/26360935/131666926-4e3a4ab4-5513-4f7a-af97-b4fffb84dfd7.png)
+
 ## External libraries used
 
 - [Keyboard](https://pypi.org/project/keyboard/)
