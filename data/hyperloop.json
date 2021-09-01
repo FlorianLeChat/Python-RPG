@@ -1,0 +1,269 @@
+{
+	"info":
+	{
+		"author": "Florian Dubois",
+		"language": "english",
+		"category": "sci-fi",
+		"title": "Hyperloop",
+		"description": "Devastated by climate disasters, a group of people find a mysterious technology."
+	},
+
+	"script":
+	{
+		"0": {
+			"type": "dialog",
+			"note": "The group approaches the shopping center.",
+			"data": [
+				"Woman-1: *Radio* Are you receiving me?",
+				"Operator: *Radio* I hear you perfectly.",
+				"Woman-1: *Radio* We are in position in front of the building."
+			]
+		},
+
+		"1": {
+			"type": "narrator",
+			"note": "Description of location and characters.",
+			"data": [
+				"The group of people are approaching an old shopping mall through its parking lot, armed with small pistols, they are watching for signs of hostilities.",
+				"The condition of the building appears to be severely damaged, the weather looks overcast presaging rain within the next few minutes.",
+				"One woman and three men make up the group, from their military attire, they seem to be used to this kind of situation.",
+				"One of them is holding a small device that seems to analyze the presence of electro-magnetic waves."
+			]
+		},
+
+		"2": {
+			"type": "dialog",
+			"note": "Strange discovery and communications with their base radio operator.",
+			"data": [
+				"Woman-1: What does it say then?",
+				"Man-1: In the basement, there is something strange.",
+				"Woman-1: What do you mean? Explain.",
+				"Man-2: Something strange? I remember patrolling here once, but I didn't see anything special.",
+				"Man-1: It looks like a very powerful machine is still running down there.",
+				"Woman-1: That's impossible, there hasn't been electricity for ages.",
+				"Operator: *Radio* The area is secure, you can go in.",
+				"Man-3: *Radio* Negative, John is picking up something weird.",
+				"John: *Radio* Something is working in this mall, I'm sure of it.",
+				"Operator: *Radio* Want to get some backup on this one?",
+				"Woman-1: *Radio* I don't want to wait two more hours in this parking lot.",
+				"Man-2: *Radio* Well, we'll let you know then.",
+				"Operator: *Radio* Copy. Over."
+			]
+		},
+
+		"3": {
+			"type": "narrator",
+			"note": "Description of the building interior and basement as it relates to the disaster.",
+			"data": [
+				"Always on the lookout, the group of people sink into the bowels of the structure",
+				"admiring in passing the ruins of the ancient human civilization.",
+				"Upon arrival in the hall, their gaze passes from left to right, looking for an access to the basement.",
+				"However, as they move further into the complex, they finally discover an ancient escalator to the lower level.",
+				"With the lack of light, people turn on their flashlights in order to illuminate the surroundings.",
+				"They can see around them a real scene of desolation: closed stores, old advertisements,",
+				"and old objects reminiscent of another time. But you can also see traces of the fighting which raged in the building.",
+				"Barbed wire, fences and military tents are present in some parts of the basement. Some bodies are",
+				"also present but don't seem to be really recognizable anymore, almost skeletal with time."
+			]
+		},
+
+		"4": {
+			"type": "dialog",
+			"note": "The group arrives close to the emission source but their base announces an enemy presence close to their position.",
+			"data": [
+				"Woman-1: It's creeping me out here.",
+				"Man-1: Don't worry Amanda, just think of the endgame.",
+				"Amanda: Yeah great, that makes me feel even better.",
+				"Man-3: Well shut up, John needs to concentrate.",
+				"John: We're not too far away...",
+				"Man-1: One comment, Mick, you seem very quiet today.",
+				"Mickael: Well listen, I just want to finish the mission, that's all.",
+				"Man-1: Oh easy, I just wanted to see how you were doing.",
+				"Michael: Hmm..",
+				"Amanda: Which way, John?",
+				"John: Straight ahead, section C3.",
+				"Operator: *Radio* To people near the mall, enemy presence detected in the surroundings.",
+				"Mickael: *Radio* More information?",
+				"Operator: *Radio* Negative, a patrol was attacked about ten minutes ago two miles from your position.",
+				"Man-1: *Radio* We're on the lookout here, no worries.",
+				"Operator: *Radio* Thomas is not far from your position, he will join you to help.",
+				"Amanda: *Radio* Understood. Over.",
+				"Man-1: Why send the head of security?",
+				"John: Maybe because he's a real military man compared to us?",
+				"Man-1: You're probably right.",
+				"Amanda: Rule number one, John is always right, Luis."
+			]
+		},
+
+		"5": {
+			"type": "narrator",
+			"note": "The group encounters other survivors near the machine emitting a noise.",
+			"data": [
+				"After this short break, the group resumes their journey to the farthest section of the mall.",
+				"Still in this apocalyptic and dark landscape, he continues to walk for a good ten minutes.",
+				"However, upon arrival near the section, they hear voices, noises, the first question that comes to mind:",
+				"enemies? allies? why are they here? John comes to make signs to the rest of the group to mean to stop.",
+				"They then come to regroup in order to approach the place more from the left side. A group of about ten people",
+				"seem to be around a machine emitting a pretty annoying noise. Moreover, the place where the group is located seems to be partially",
+				"lighted with an old oil generator. The people in the group don't seem to be well armed and don't really expect to meet",
+				"people, one of them even sleeps against one of the old windows of a shoe store. The rest are decidedly busy with other things",
+				"anything but protecting their property. That's when Amanda waves her hand, signifying that she'll approach to determine their",
+				"intentions, which the rest of the group will figure out before quickly moving into position."
+			]
+		},
+
+		"6": {
+			"type": "action",
+			"note": "Amanda carefully approaches the group of people.",
+			"description": "Amanda, gun down, slowly approaches the group of people, making noise to get their attention.",
+			"results": [
+				"[NOT USED]",
+				"As she advances toward the group, the survivors hear her raising their guns toward her, Amanda then stops to place her gun on the ground."
+			]
+		},
+
+		"7": {
+			"type": "dialog",
+			"note": "The meeting with the group of survivors goes badly, the situation becomes more tense.",
+			"data": [
+				"Amanda: Hello ?",
+				"Ennemy-1: Well, well, well, well..",
+				"Ennemy-2: Is she our surprise guest?",
+				"Amanda: We just want to know who you are and what you do with that machine.",
+				"Ennemy-3: It's not your business, is it?",
+				"Ennemy-2: You're fucking stupid, she said 'we' so she's not alone.",
+				"Ennemy-4: Get the rest of you out of here.",
+				"Amanda: No they won't get out *waving behind her back*.",
+				"Amanda: I want to make sure you don't do anything malicious.",
+				"Ennemy-1: Malicious? Are you kidding me?",
+				"Amanda: No way!"
+			]
+		},
+
+		"8": {
+			"type": "narrator",
+			"note": "Amanda gets attacked, the two groups clash through a shootout.",
+			"data": [
+				"Following these words, the rest of the people in the group seem to be on edge, looking down the hallway to try to catch a glimpse",
+				"Amanda's group. John, Michael and Luis are ready to shoot if anything goes wrong. But as a long silence",
+				"echoed through the room, men from the group came past Amanda, hand-to-hand weapons in hand. After a few seconds of waiting,",
+				"one of the men comes and lands a heavy punch to the back of Amanda's head, she falls to the floor in pain.",
+				"The rest of Amanda's group then stood up and fired at the group of armed individuals, beginning a gun battle between the",
+				"two groups of individuals."
+			]
+		},
+
+		"9": {
+			"type": "dialog",
+			"note": "Amanda's group are overwhelmed and think they are going to die quickly.",
+			"data": [
+				"Luis: Ahh shit! Where's my fucking radio.",
+				"Mickael: *Radio* We're getting shot up here, Amanda is seriously hurt.",
+				"Operator: *Radio* Shit! I'm sending Carl's group, hold on!",
+				"John: She's not going to make it and we're outnumbered.",
+				"Mickael: *Radio* We're not going to be able to hold out here, I think those were our last words.",
+				"Operator: *Radio* No, hold on damn it, I wouldn't take losing anyone."
+			]
+		},
+
+		"10": {
+			"type": "narrator",
+			"note": "Thomas arrives to take down the group of enemies.",
+			"data": [
+				"As Amanda's group comes under heavy fire from the enemy group, Luis seems to see a glow on the other side of the sector,",
+				"almost like a sniper scope. That's when he cries 'Sniper' to his group to take full cover.",
+				"The sniper comes to fire repeatedly against the armed individuals, each bullet fired injures or kills the individuals. The hostile group comes",
+				"then concentrate their fire on the sniper but without much success given the distance between them. After a few minutes, the sniper stops",
+				"totally firing, it is then that Amanda's group comes to shoot the last individuals and disarm a wounded survivor before tying him up.",
+				"John quickly goes to Amanda to see her injuries, she seems conscious but in very bad shape as she has a head injury.",
+				"It is then that the individual dressed in a military uniform rather than faded with time moves towards the rest of the group, handgun in hand.",
+				"Arriving at their level, Luis seems to quickly recognize the individual."
+			]
+		},
+
+		"11": {
+			"type": "dialog",
+			"note": "Thomas comes to meet Amanda's group and discovers the mysterious machine.",
+			"data": [
+				"Luis: Holy crap it's Thomas, guys!",
+				"John: What?",
+				"Thomas: Didn't you girls miss me too much?",
+				"Mickael: A little more and we were going to get screwed by his assholes.",
+				"Thomas: The base told me you were on patrol here, I wanted to surprise you but now I've arrived at the right time.",
+				"Luis: *Radio* The base, it's good for reinforcements, Thomas has arrived!",
+				"Operator: *Radio* Oh yeah! Good to hear from you guys, I'm relieved for fuck's sake.",
+				"Luis: *Radio* Amanda is hurt but everything will be fine on the way back.",
+				"Operator: *Radio* I'll tell Carl to wait for you outside the mall just in case.",
+				"Luis: *Radio* Sure, we'll be in touch *sigh*.",
+				"Thomas: What's that machine?",
+				"John: Well, we're going to interview the only one of the bastards alive, right?",
+				"Thomas: Who are you?",
+				"Ennemy: Ahhh, I'm in fucking pain.",
+				"Thomas: Did you like my gun? Do you want me to give you more?",
+				"Ennemy: No it's okay! I'll tell you everything!",
+				"Luis: Why was your group here with that machine?",
+				"Ennemy: I don't fucking know! I was just told that it was important, it was brought here by the military.",
+				"Thomas: Why did the military bring this machine here? Is it important?",
+				"Luis: Wait, I'll get the documents from the table.",
+				"Ennemy: I don't know more about it, I was told to follow these guys to watch this machine.",
+				"Thomas: Luis, any news?",
+				"Luis: It's called 'Hyperloop', it's an army technology.",
+				"Mickael: Hyperloop?",
+				"Thomas: Have you heard of it?",
+				"Mickael: It was a technology that was leaked on some forums at the time.",
+				"Thomas: Well, we'll have to bring it back then.",
+				"John: Is it heavy?",
+				"Thomas: We can do the test now."
+			]
+		},
+
+		"12": {
+			"type": "action",
+			"note": "Amanda's group attempts to lift the machine.",
+			"description": "Thomas, Luis, Mickael and John approach the machine before attempting to lift it.",
+			"requirement": 90,
+			"results": [
+				"Despite an effort of the four men, the machine seems impossible to lift.",
+				"After several attempts, the people manage to lift it but it is far too heavy to be carried."
+			]
+		},
+
+		"13": {
+			"type": "dialog",
+			"note": "The group can't get the machine back together, so they go to the surface with Amanda.",
+			"data": [
+				"Luis: Damn, it weighs a ton.",
+				"Thomas: Forget it guys, we won't be able to transport it, we'd have to bring a vehicle and men for that.",
+				"Luis: Is it worth it for this machine?",
+				"Thomas: John seems to say it's pretty important and then a technology from the army, it's not every day.",
+				"John: Yeah, I couldn't have said it better myself.",
+				"Mickael: Guys we have to hurry, Amanda is not getting any better, she's already lost a lot of blood.",
+				"Thomas: *Radio* Guys in front of the mall, get the car ready for an injured person.",
+				"Man: *Radio* Copy, we're waiting for you.",
+				"Thomas: You guys in protection, I'll take it.",
+				"Amanda: Hmm..",
+				"Thomas: Yeah yeah.",
+				"Luis: Let's go, guys.",
+				"John: I'll write down the position for next time.",
+				"Thomas: Good idea.",
+				"Survivor: Don't leave me here!",
+				"Mickael: No, you're staying here."
+			]
+		},
+
+		"14": {
+			"type": "narrator",
+			"note": "Amanda's group is making their way to the surface towards the men who arrived as reinforcements.",
+			"data": [
+				"The five people slowly make their way back to the surface, taking the exact path they did when they arrived.",
+				"With a confident step and a hurried gait in view of Amanda's plight, Thomas hurries on.",
+				"After fifteen minutes, the group finally arrives at the backup and waits in position around the two vehicles present",
+				"in the large parking lot of the old shopping center. After the greetings, the survivors embarked before taking the road to",
+				"the operational base, temporarily completing their journey through the devastated landscape of the ancient civilization",
+				"The next few days are spent caring for Amanda and recovering the machine found in the mall.",
+				"After extraordinary efforts, the soldiers manage to recover this machine, which according to some scientists, has a",
+				"of paramount importance to the reconstruction of Humanity, one day perhaps..."
+			]
+		}
+	}
+}
