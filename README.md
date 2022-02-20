@@ -1,4 +1,4 @@
-# Python-RPG
+# 📖 Python-RPG
 
 Here is a small program which will allow you to build and read interactive stories in text format. For the moment, the stories are quite simplistic and have no advanced interaction except the basics: narration, action, consequence and dialogues. Later (maybe) the program will be able to handle more complex interactions.
 
