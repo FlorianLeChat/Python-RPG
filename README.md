@@ -1,5 +1,8 @@
 # 📖 Python-RPG
 
+> [!CAUTION]
+> **This project is no longer maintained since March 2024. If you intend to run the whole or some part of my source code, please be aware that some dependencies will be outdated and you expose yourself to security vulnerabilities if proper safeguards are not enforced.**
+
 Here is a small program which will allow you to build and read interactive stories in text format. For the moment, the stories are quite simplistic and have no advanced interaction except the basics: narration, action, consequence and dialogues. Later (maybe) the program will be able to handle more complex interactions.
 
 At the moment, the program is written entirely in [Python](https://www.python.org/) and has been tested **only** on Windows, however due to the lack of compatibility with Linux/MacOS on some libraries, **I will not provide an executable for these versions to avoid complaints.** However, you have all the necessary files to compile it manually if needed (see below).
